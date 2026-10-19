@@ -5,222 +5,229 @@
   <title>軽音部タイムスケジュール</title>
 
   <style>
-    /* ============================
-       🌤️ 青空フェス背景
-       ============================ */
-    body {
-      background: linear-gradient(to bottom, #74c9ff, #dff6ff);
-      color: #003366;
-      font-family: 'Hiragino Sans', sans-serif;
-      overflow-x: hidden;
-      margin: 0;
-      padding: 0;
-    }
 
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 200%;
-      height: 100%;
-      background: url('https://i.imgur.com/8KpZQ0R.png') repeat-x;
-      opacity: 0.25;
-      animation: clouds 60s linear infinite;
-      pointer-events: none;
-    }
+    /* ABOUTセクション（黒×ネオン） */
+.neon-section {
+  padding: 80px 20px;
+  text-align: center;
+  background: #000;
+  color: #fff;
+  position: relative;
+}
 
-    @keyframes clouds {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
+/* タイトル（ネオン発光） */
+.neon-title {
+  font-size: 2.8em;
+  margin-bottom: 30px;
+  text-shadow: 
+    0 0 10px #a200ff,
+    0 0 20px #a200ff,
+    0 0 40px #a200ff;
+}
 
-    /* ============================
-       🌞 タイトル
-       ============================ */
-    h1 {
-      text-align: center;
-      font-size: 3.5em;
-      color: #007bff;
-      text-shadow:
-        0 0 10px #ffffff,
-        0 0 20px #aee6ff,
-        0 0 40px #ffffff;
-      letter-spacing: 3px;
-      font-family: 'Impact', sans-serif;
-      margin-bottom: 60px;
-      margin-top: 40px;
-      animation: shine 3s infinite;
-    }
+/* 説明文 */
+.about-text {
+  font-size: 1.3em;
+  line-height: 1.8;
+  margin-bottom: 40px;
+  color: #ddd;
+}
 
-    @keyframes shine {
-      0% { text-shadow: 0 0 10px #fff; }
-      50% { text-shadow: 0 0 25px #fffa9e; }
-      100% { text-shadow: 0 0 10px #fff; }
-    }
+/* 場所・日時の枠 */
+.about-info {
+  display: inline-block;
+  padding: 20px 30px;
+  border: 2px solid #a200ff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #a200ff;
+  margin-bottom: 30px;
+  background: rgba(20,20,20,0.8);
+}
 
-    /* ============================
-       🎪 説明文
-       ============================ */
-    .intro {
-      width: 90%;
-      margin: 0 auto 40px;
-      padding: 30px;
-      font-size: 1.2em;
-      line-height: 1.8;
-      color: #003366;
-      background: rgba(255,255,255,0.85);
-      border-left: 6px solid #ffdd55;
-      border-right: 6px solid #ff7b7b;
-      border-radius: 12px;
-      box-shadow: 0 0 12px rgba(0, 120, 200, 0.3);
-      box-sizing: border-box;
-    }
+.about-info .label {
+  color: #ff00ff;
+  font-weight: bold;
+}
 
-    /* ============================
-       🎤 スケジュール枠
-       ============================ */
-    .schedule {
-      display: flex;
-      flex-direction: column;
-      gap: 60px;
-      padding: 0 12px;
-    }
+/* 注意書き */
+.note {
+  font-size: 0.9em;
+  color: #aaa;
+  margin-top: 20px;
+}
 
-    .slot {
-      width: 100%;
-      padding: 35px 25px;
-      background: rgba(255,255,255,0.9);
-      border: 3px solid #7ecbff;
-      border-radius: 18px;
-      box-shadow: 0 6px 15px rgba(0, 120, 200, 0.25);
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-      position: relative;
-    }
+/* 下のネオンライン */
+.neon-line {
+  width: 80%;
+  height: 4px;
+  margin: 40px auto 0;
+  background: linear-gradient(90deg, #a200ff, #ff00ff, #ff0099);
+  box-shadow: 0 0 20px #ff00ff;
+  border-radius: 4px;
+}
 
-    .slot.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+body {
+  margin: 0;
+  font-family: 'Hiragino Sans', sans-serif;
+  background: #000;
+  color: #fff;
+}
 
-    .slot::before {
-      content: "";
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60%;
-      height: 12px;
-      background: linear-gradient(90deg, #ffdd55, #ff7b7b);
-      border-radius: 6px;
-    }
+/* ネオン発光 */
+.neon {
+  text-shadow: 0 0 8px #ff00ff, 0 0 16px #ff00ff;
+}
 
-    .slot h2 {
-      margin: 0 0 10px;
-      font-size: 2em;
-      color: #0055aa;
-    }
+/* ① ヒーローヘッダー */
+.hero {
+  height: 80vh;
+  background: radial-gradient(circle at center, #1a1a1a, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
-    .band-name {
-      font-size: 2.6em;
-      font-weight: bold;
-      color: #0055aa;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
-      margin-bottom: 10px;
-    }
+.hero h1 {
+  font-size: 4em;
+  color: #fff;
+  text-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+}
 
-    .slot li {
-      font-size: 1.4em;
-      color: #004466;
-      margin-bottom: 6px;
-    }
+.hero-sub {
+  font-size: 1.4em;
+  margin-top: 10px;
+  color: #ccc;
+}
 
-    /* ============================
-       📱 スマホ専用：画像最適化＋間隔拡大
-       ============================ */
-    @media (max-width: 600px) {
+.cta-btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 30px;
+  background: #ff00ff;
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1.2em;
+  box-shadow: 0 0 20px #ff00ff;
+}
 
-      .schedule {
-        gap: 90px; /* コンテンツ間隔を広げる */
-      }
+/* ② ABOUT */
+.about {
+  padding: 80px 20px;
+  text-align: center;
+}
 
-      .slot {
-        padding: 45px 28px; /* 枠内の余白を広げる */
-      }
+.about h2 {
+  font-size: 2.5em;
+  text-shadow: 0 0 10px #00ffff;
+}
 
-      .slot img {
-        width: 100%;
-        height: auto;          /* 縦長写真をそのまま表示 */
-        object-fit: contain;   /* 人物が切れない */
-        background-color: rgba(255,255,255,0.9);
-        border-radius: 12px;
-        border: 3px solid #fff;
-        margin-top: 20px;
-        margin-bottom: 25px;   /* 画像と次の要素の間隔 */
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      }
+/* ③ SCHEDULE */
+.schedule-section {
+  padding: 80px 20px;
+  text-align: center;
+}
 
-      .slot h2 {
-        margin-bottom: 20px; /* 時間と曲名の間隔 */
-      }
+.schedule-section h2 {
+  font-size: 2.5em;
+  text-shadow: 0 0 10px #00ffff;
+}
 
-      .slot ul {
-        margin-top: 15px;
-      }
-    }
+.schedule {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
 
-    /* PC用画像（そのまま） */
-    .slot img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
-      border: 3px solid #fff;
-      margin-top: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
+/* slot（既存のものにネオン枠を追加） */
+.slot {
+  background: rgba(20,20,20,0.9);
+  border: 2px solid #ff00ff;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 0 20px #ff00ff;
+}
 
-    /* ============================
-       🔆 TOPボタン
-       ============================ */
-    #backToTop {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      padding: 12px 20px;
-      font-size: 1em;
-      background-color: #ffdd55;
-      color: #333;
-      border: none;
-      border-radius: 50px;
-      box-shadow: 0 0 15px #ffe98a;
-      cursor: pointer;
-      display: none;
-      z-index: 1000;
-      transition: opacity 0.3s ease;
-    }
+/* ④ ARTISTS */
+.artists {
+  padding: 80px 20px;
+  text-align: center;
+}
 
-    #backToTop:hover {
-      background-color: #ffe98a;
-      box-shadow: 0 0 20px #fff6a0;
-    }
+.artists h2 {
+  font-size: 2.5em;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+.artist-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+}
+
+.artist-card {
+  width: 250px;
+  background: #111;
+  border: 2px solid #00ffff;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 20px #00ffff;
+}
+
+.artist-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+/* ⑤ ACCESS */
+.access {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.access img {
+  width: 80%;
+  max-width: 500px;
+  border: 2px solid #ff00ff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #ff00ff;
+}
+
+/* ⑥ FOOTER */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #111;
+  border-top: 2px solid #ff00ff;
+}
 
   </style>
 </head>
 
 <body>
 
-  <h1>KRC軽音部タイムスケジュール</h1>
+  <section class="about neon-section">
+  <h2 class="neon-title">KRC 軽音部タイムスケジュール</h2>
 
-  <div class="intro">
-      <p>今年の軽音部ライブは、来てくれた人も巻き込んで最高のライブを作り上げます</p>
-      <p>知っている曲、知らない曲問わず会場全員で一緒に音楽を楽しみましょう！</p>
-      <p>場所：5号館 522教室</p>
-      <p>日時：10月26日 12:00~14:00</p>
-      <p>軽音部一同お待ちしております。</p>
-      <p>※時間はあくまで想定です。前後する可能性があります。</p>
+  <p class="about-text">
+    今年の軽音部ライブは、来てくれた人も巻き込んで最高のライブを作り上げます。<br>
+    知っている曲、知らない曲問わず会場全員で一緒に音楽を楽しみましょう！
+  </p>
+
+  <div class="about-info">
+    <p><span class="label">場所：</span>5号館522教室</p>
+    <p><span class="label">日時：</span>10月26日 12:00〜14:00</p>
   </div>
+
+  <p class="note">※演奏時間はあくまで想定です。前後する可能性があります。</p>
+
+  <div class="neon-line"></div>
+</section>
+
 
   <div class="schedule">
     <div class="slot">
@@ -267,7 +274,7 @@
       <ul>
         <li>曲1 - おやすみ泣き声さよなら歌姫</li>
       </ul>
-      <img src="gazou/IMG_0203.jpg" alt="バンドEの写真">
+      <img src="gazou/IMG_0207.jpg" alt="バンドEの写真">
     </div>
 
     <div class="slot">
